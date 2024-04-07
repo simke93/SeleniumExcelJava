@@ -2,7 +2,6 @@ package datadriven;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,9 +18,14 @@ public class ParameterizeTest {
 
 
         //get test data from excel:
-        Xls_Reader reader = new Xls_Reader("C:/Users/P52s-Workstation/Desktop/HalfTestData.xlsx");
+        Xls_Reader reader = new Xls_Reader("C:/Users/P52s-Workstation/IT Akademija vezbanje " +
+                "QA/java_programs/DDFSeleniumExcel/DDFSeleniumExcel/src/test/java/testdata" +
+                "/HalfTestData.xlsx");
         int rowCount = reader.getRowCount("RegTestData");
-//parameterization
+
+        reader.addColumn("RegTestData", "Status");
+
+        //parameterization
         for(int rowNum = 2; rowNum<=rowCount; rowNum++) {
             System.out.println("===================");
             String firstName = reader.getCellData("RegTestData", "firstname",rowNum);
@@ -60,6 +64,9 @@ public class ParameterizeTest {
 
             driver.findElement(By.id("input-confirm")).clear();
             driver.findElement(By.id("input-confirm")).sendKeys(passwordConfirm);
+
+            reader.setCellData("RegTestData", "Status", rowNum, "Pass"); //write the data into a
+            // cell
 
 
 
