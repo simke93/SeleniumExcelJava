@@ -16,7 +16,7 @@ public class ParameterizeTest {
         WebDriver driver = new ChromeDriver();// Use the driver to navigate to a webpage
         driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/register");
 
-
+//Data Driven Approach(Parameterization) -- used to create data driven framework: driving the data from excel files
         //get test data from excel:
         Xls_Reader reader = new Xls_Reader("C:/Users/P52s-Workstation/IT Akademija vezbanje " +
                 "QA/java_programs/DDFSeleniumExcel/DDFSeleniumExcel/src/test/java/testdata" +
